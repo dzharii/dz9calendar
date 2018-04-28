@@ -2,6 +2,7 @@ import "./Calendar.css";
 import * as React from 'react';
 import { WeekDaysHeader } from './WeekDaysHeader';
 import { MonthDaysGrid } from './MonthDaysGrid';
+import * as date from '../../lib/date';
 
 export interface MyProps {}
 export interface MyState {}
