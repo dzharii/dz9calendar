@@ -1,5 +1,10 @@
+import {CyclicIterator} from "../lib/collections";
+
+
 export const WeekDayName = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 export const MonthName = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+export const WeekBeginDay = 0;
+export const WeekEndDay = 6;
 
 
 export function lastDayOfMonth(year:number, month: number): number {
@@ -17,29 +22,37 @@ export function allMonthDays(year:number, month: number): number[] {
     return result;
 }
 
-/*
+
 export function allMonthDaysByWeek(year:number, month: number): number[][] {
     _assertValidYearAndMonth(year, month);
+
     let result: number[][] = [];
 
     const lastMonthDay = lastDayOfMonth(year, month);
-    const firstDayDate = new Date(year, month, 1);
+    const firstMonthDayDate = new Date(year, month - 1, 1);
+    const firstMonthDayWeekDay = firstMonthDayDate.getDay();
+    const weekDayIter = new CyclicIterator(WeekBeginDay, WeekEndDay, firstMonthDayWeekDay);
 
 
-    for (let i = 0; i < lastMonthDay; i++) {
-
+    let row:(number|null)[] | null = null;
+    for (let day = 1; day <= lastMonthDay; day++) {
+        if (row === null) {
+            row = [null, null, null, null, null, null, null];
+        }
+        let weekDayIndex = weekDayIter.next();
+        row[weekDayIndex] = day;
+        if (weekDayIndex === WeekEndDay) {
+            result.push(<number[]>row);
+            row = null;
+        }
     }
-
-    const DAYS_IN_A
-    var day = days[ now.getDay() ];
-    var month = months[ now.getMonth() ];
-
+    if (row !== null) {
+        result.push(<number[]>row);
+    }
+    return result;
 }
-*/
 
-export function mkWeekDaysIterator() {
 
-}
 
 export function _assertValidYearAndMonth(year:number, month: number) {
     if (!year) throw new Error("year is not defined");

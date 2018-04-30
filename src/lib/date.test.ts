@@ -21,6 +21,23 @@ describe("allMonthDays", () => {
     })
 });
 
+describe('allMonthDaysByWeek', () => {
+    it('should should return a valid array for April 2018', () => {
+        let actual = date.allMonthDaysByWeek(2018, 4);
+        expect(actual.length).toBe(5);
+        expect(actual[0][0]).toBe(1);
+        expect(actual[4][1]).toBe(30);
+    });
+
+    it('should should return a valid array for February 2018', () => {
+        let actual = date.allMonthDaysByWeek(2018, 2);
+        expect(actual.length).toBe(5);
+        expect(actual[0][0]).toBe(null);
+        expect(actual[0][4]).toBe(1);
+        expect(actual[4][3]).toBe(28);
+    });
+});
+
 describe("_assertValidYearAndMonth", () => {
     it("should throw an exception when year is undefined", () => {
         try {
