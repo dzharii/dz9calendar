@@ -9,13 +9,18 @@ export interface MyState {}
 
 export class CalendarContainer extends React.Component<MyProps, MyState> {
     render() {
-        let days = date.allMonthDaysByWeek(2018, 1);
 
-        let weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        let currentDate = new Date();
+        let currentYear = currentDate.getFullYear();
+        let currentMonth = currentDate.getMonth() + 1;
 
+        let days = date.allMonthDaysByWeek(currentYear, currentMonth);
+        let weekDays = date.getWeekDayNames();
+        let monthName = date.getMonthName(currentMonth);
 
         return (
         <div>
+            <h1>{monthName}</h1>
             <table className="Calendar-Container">
                 <thead>
                     <WeekDaysHeader weekDayList={weekDays}/>

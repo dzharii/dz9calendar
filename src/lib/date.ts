@@ -1,4 +1,4 @@
-import {CyclicIterator} from "../lib/collections";
+import {CyclicIterator} from '../lib/collections';
 
 
 export const WeekDayName = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -6,6 +6,16 @@ export const MonthName = ['January','February','March','April','May','June','Jul
 export const WeekBeginDay = 0;
 export const WeekEndDay = 6;
 
+export function getWeekDayNames(): string[] {
+    return WeekDayName.concat();
+}
+
+export function getMonthName(month: number): string {
+    let monthInRange = month >= 1 && month <= 12;
+    if (!monthInRange) throw new Error('month value is out of range of [1 .. 12]');
+    let monthIndex = month - 1;
+    return MonthName[monthIndex];
+}
 
 export function lastDayOfMonth(year:number, month: number): number {
     _assertValidYearAndMonth(year, month);
@@ -55,6 +65,6 @@ export function allMonthDaysByWeek(year:number, month: number): number[][] {
 
 
 export function _assertValidYearAndMonth(year:number, month: number) {
-    if (!year) throw new Error("year is not defined");
-    if (!month) throw new Error("month is not defined");
+    if (!year) throw new Error('year is not defined');
+    if (!month) throw new Error('month is not defined');
  }
