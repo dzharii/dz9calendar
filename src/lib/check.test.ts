@@ -24,3 +24,13 @@ describe('isDefined', () => {
     });
 });
 
+
+describe('isFunction', () => {
+    it('returns true when item is a function', () => {
+        expect(check.isFunction(() => 10)).toBe(true);
+        expect(check.isFunction(10)).toBe(false);
+        expect(check.isFunction({})).toBe(false);
+        expect(check.isFunction(function() {})).toBe(true);
+    });
+});
+

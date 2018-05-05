@@ -25,12 +25,19 @@
     background: #ACDCDC;
 }
 
+.calendar {
+    margin: 0 auto;
+    min-width: 744px;
+    width: 80vw;
+    padding: 20px;
+}
 .grid {
-    width: 60%
+    width: 100%
 }
 
 .row {
     clear: both;
+
 }
 
 .square {
@@ -41,6 +48,7 @@
     background-color: white;
     overflow:hidden;
     border: 1px solid silver;
+
 }
 
 .content {
@@ -48,6 +56,10 @@
     height:90%; /* = 100% - 2*5% padding */
     width:90%; /* = 100% - 2*5% padding */
     padding: 5%;
+    color: #333;
+    padding: 10px;
+    text-shadow: 1px 1px 1px #fff;
+
 
 }
 .table{
@@ -92,6 +104,6 @@ li{
 
 .numbers {
     font-weight:500;
-    font-size:60px;
+    font-size:5vw;
 }
 
