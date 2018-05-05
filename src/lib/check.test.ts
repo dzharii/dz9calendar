@@ -15,3 +15,12 @@ describe('check.isUndefinedOrNull', () => {
     });
 });
 
+describe('isDefined', () => {
+    it('returns true when item defined', () => {
+        expect(check.isDefined(10)).toBe(true);
+        expect(check.isDefined("")).toBe(true);
+        expect(check.isDefined("aaa")).toBe(true);
+        expect(check.isDefined({})).toBe(true);
+    });
+});
+

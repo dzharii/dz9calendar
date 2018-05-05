@@ -1,17 +1,21 @@
 import * as React from 'react';
+import {SquareCell, SquareRow} from './CalendarPresentation';
+
 export interface MyProps {
-    days: number[][]
+    days: number[][],
+    today: number
 }
 export interface MyState {}
 
 export class MonthDaysGrid extends React.Component<MyProps, MyState> {
     render() {
         let { days } = this.props;
+
         return days.map((row, i) => {
             return (
-            <tr key={i}>
-                {row.map((cell, j) => (<td key={j}>{ cell } </td>))}
-            </tr>);
+            <SquareRow key={i}>
+                {row.map((cell, j) => (<SquareCell key={j} className="numbers">{cell}</SquareCell>))}
+            </SquareRow>);
         });
     }
 }
