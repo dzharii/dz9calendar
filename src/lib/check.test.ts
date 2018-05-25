@@ -1,7 +1,7 @@
 import * as check from './check';
 
 var undefVal: number;
-var nullVal = null;
+
 describe('check.isUndefinedOrNull', () => {
     it('should return true when argument is undefined or null', () => {
         expect(check.isUndefinedOrNull(undefVal)).toBe(true);

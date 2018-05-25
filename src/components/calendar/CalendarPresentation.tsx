@@ -25,6 +25,26 @@ export class SquareCell extends React.Component<SquareCellProps> {
     }
 }
 
+export class SquareHeaderCell extends React.Component<SquareCellProps> {
+    render() {
+        let { children, className } = this.props;
+
+        let contentClass = ["header-table-cell", className]
+                           .filter(check.isDefined)
+                           .join(" ");
+
+        return (<div className="header-square">
+            <div className="header-content">
+                <div className="header-table">
+                    <div className={contentClass}>
+                        {children}
+                    </div>
+                </div>
+            </div>
+        </div>)
+    }
+}
+
 export class SquareRow extends React.Component {
     render() {
         let { children } = this.props;

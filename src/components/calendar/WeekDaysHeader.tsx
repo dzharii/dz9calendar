@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {SquareCell, SquareRow} from './CalendarPresentation';
+import {SquareHeaderCell, SquareRow} from './CalendarPresentation';
 
 export interface MyProps {
     weekDayList: string[]
@@ -11,7 +11,7 @@ export class WeekDaysHeader extends React.Component<MyProps, MyState> {
         let {weekDayList} = this.props;
         return (<SquareRow>
         {
-            weekDayList.map((wd, i) => (<SquareCell key={i}>{wd}</SquareCell>))
+            weekDayList.map((wd, i) => (<SquareHeaderCell key={i} className="weekdays">{wd}</SquareHeaderCell>))
         }
         </SquareRow>);
     }

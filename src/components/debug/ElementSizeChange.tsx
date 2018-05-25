@@ -23,6 +23,7 @@ export class ElementSizeChange extends React.Component<Props, State> {
     isRunning: boolean = false;
     watchElement: HTMLElement | null;
     label: string = "";
+    _timeOut = -1;
 
     constructor(props: Props) {
         super(props);
@@ -45,12 +46,15 @@ export class ElementSizeChange extends React.Component<Props, State> {
 
         if (!this.isRunning) {
             this.isRunning = true;
-            setTimeout(this.run, this.timeIntervalMs);
+            this._timeOut = window.setTimeout(this.run, this.timeIntervalMs);
         }
     }
 
     componentWillUnmount() {
         this.isRunning = false;
+        if (this._timeOut >= 0) {
+            clearTimeout(this._timeOut);
+        }
     }
 
     run = () => {
